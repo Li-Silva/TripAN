@@ -60,13 +60,15 @@ public class HomeController {
             trip1.setFecha(sdf.parse("10-05-2026"));
             trip1.setCosto(5.0);
             trip1.setDestacado(1);
-
+            trip1.setImagen("trip01.png");
+            
             Trip trip2 = new Trip();
             trip2.setId(2);
             trip2.setNomTrip("Deslizadero en El Picnic");
             trip2.setDescripcion("Deslízate en un divertido tobogán sobre la colina");
             trip2.setFecha(sdf.parse("10-05-2026"));
             trip2.setCosto(5.0);
+            trip2.setImagen("trip02.png");
 
             Trip trip3 = new Trip();
             trip3.setId(3);
@@ -74,6 +76,7 @@ public class HomeController {
             trip3.setDescripcion("Disfruta de un amplio jardín donde podrás comprar");
             trip3.setFecha(sdf.parse("10-05-2026"));
             trip3.setCosto(1.0);
+            trip3.setImagen("trip03.png");
 
             Trip trip4 = new Trip();
             trip4.setId(4);
@@ -81,6 +84,7 @@ public class HomeController {
             trip4.setDescripcion("Disfruta hacer senderismo en Chalatenango");
             trip4.setFecha(sdf.parse("10-05-2026"));
             trip4.setCosto(1.0);
+            trip4.setImagen("trip04.png");
 
 
             lista.add(trip1);

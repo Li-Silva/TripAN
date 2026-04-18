@@ -10,12 +10,14 @@
 <body>
 
 <div class="container mt-4">
+<img alt="logo" th:src="@{/images/logo.png}" width="130" height="100">
     <h1>Trips en El Salvador</h1>
 
     <table class="table table-hover table-striped">
         
         <thead>
             <tr>
+                <th>Imagen</th>
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Fecha publicación</th>
@@ -27,18 +29,15 @@
 
         <tbody>
             <tr th:each="trip : ${listadoTrips}">
+            <td>
+            <img alt="" th:src="@{/images/{img} (img=${trip.imagen})}" width="100" height="100">
+            </td>
                 <td th:text="${trip.id}"></td>
                 <td th:text="${trip.nomTrip}"></td>
-
-                <!-- Fecha formateada -->
                 <td th:text="${#dates.format(trip.fecha, 'dd/MM/yyyy')}"></td>
-
-                <!-- Costo formateado -->
                 <td th:text="${#numbers.formatDecimal(trip.costo, 1, 2)}"></td>
-
                 <td th:text="${trip.descripcion}"></td>
 
-                <!-- ✅ Destacado con badge -->
                 <td>
                     <span th:if="${trip.destacado == 1}" class="badge bg-success">Sí</span>
                     <span th:unless="${trip.destacado == 1}" class="badge bg-danger">No</span>
