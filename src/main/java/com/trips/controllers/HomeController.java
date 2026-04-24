@@ -84,7 +84,7 @@ public class HomeController {
             trip4.setDescripcion("Disfruta hacer senderismo en Chalatenango");
             trip4.setFecha(sdf.parse("10-05-2026"));
             trip4.setCosto(1.0);
-            trip4.setImagen("trip04.png");
+            trip4.setImagen("trip04.jpg");
 
 
             lista.add(trip1);
