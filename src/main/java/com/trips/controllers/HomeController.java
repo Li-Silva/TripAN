@@ -1,12 +1,11 @@
 package com.trips.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.trips.models.Trip;
 import com.trips.services.ITripServices;
@@ -17,38 +16,42 @@ public class HomeController {
     @Autowired
     private ITripServices tripService;
 
+    //  HOME (lista principal)
     @GetMapping("/")
     public String mostrarHome(Model model) {
-        model.addAttribute("trip", "Rapel en el Volcan");
-        model.addAttribute("fechaPublicacion", new Date());
-        model.addAttribute("costo", 5.0);
-        model.addAttribute("vigente", true);
+        List<Trip> lista = tripService.buscarTodo();
+        model.addAttribute("trips", lista);
         return "home";
     }
 
+    // LISTADO 
     @GetMapping("/listado")
     public String mostrarListado(Model model) {
         List<Trip> lista = tripService.buscarTodo();
-        model.addAttribute("listadoTrips", lista);
+        model.addAttribute("trips", lista); 
         return "listado";
     }
 
-    @GetMapping("/detalle")
-    public String mostrarDetalle(Model model) {
-        Trip trip = new Trip();
-        trip.setNomTrip("Rapel en Volcatenango");
-        trip.setDescripcion("Rapel en un circuito...");
-        trip.setFecha(new Date());
-        trip.setCosto(10.0);
+    // DETALLE REAL POR ID
+    @GetMapping("/detalle/{id}")
+    public String mostrarDetalle(@PathVariable("id") Integer id, Model model) {
 
-        model.addAttribute("trip", trip);
-        return "detalle";
+        Trip trip = tripService.buscarPorId(id);
+
+        if (trip != null) {
+            model.addAttribute("trip", trip);
+            return "detalle";
+        } else {
+            model.addAttribute("mensaje", "El viaje no existe");
+            return "mensaje";
+        }
     }
 
+    //TABLA 
     @GetMapping("/tabla")
     public String mostrarTabla(Model model) {
         List<Trip> lista = tripService.buscarTodo();
-        model.addAttribute("listadoTrips", lista);
+        model.addAttribute("trips", lista);
         return "tabla";
     }
 }

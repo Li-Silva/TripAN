@@ -34,6 +34,7 @@ public class TripServiceImpl implements ITripServices {
             trip2.setDescripcion("Deslízate en un tobogán");
             trip2.setFecha(sdf.parse("10-05-2026"));
             trip2.setCosto(5.0);
+            trip2.setDestacado(0); 
             trip2.setImagen("trip02.png");
 
             Trip trip3 = new Trip();
@@ -42,6 +43,7 @@ public class TripServiceImpl implements ITripServices {
             trip3.setDescripcion("Disfruta del jardín");
             trip3.setFecha(sdf.parse("10-05-2026"));
             trip3.setCosto(1.0);
+            trip3.setDestacado(0);
             trip3.setImagen("trip03.png");
 
             lista.add(trip1);
@@ -61,10 +63,10 @@ public class TripServiceImpl implements ITripServices {
     @Override
     public Trip buscarPorId(Integer idTrip) {
         for (Trip trip : lista) {
-            if (trip.getId() == idTrip) {
+            if (trip.getId().equals(idTrip)) {
                 return trip;
             }
         }
-        return null;
+        return null; 
     }
 }
