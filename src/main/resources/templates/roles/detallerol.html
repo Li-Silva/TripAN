@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Detalle de Rol</title>
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <h1 class="text-center">Detalle del rol</h1>
+    <hr>
+
+    <!-- VALIDACIÓN -->
+    <div th:if="${rol != null}">
+
+        <h3>
+            <strong>Nombre:</strong>
+            <span th:text="${rol.nomRol}"></span>
+        </h3>
+
+        <h3>
+            <strong>Fecha de publicación:</strong>
+            <span th:text="${#dates.format(rol.fecha, 'dd-MM-yyyy')}"></span>
+        </h3>
+
+
+        <h3>
+            <strong>Descripción:</strong>
+            <span th:text="${rol.descripcion}"></span>
+        </h3>
+
+
+    </div>
+
+    <!-- SI NO EXISTE -->
+    <div th:if="${rol == null}">
+        <h3 class="text-danger">No se encontró el rol</h3>
+    </div>
+
+    <!-- BOTÓN VOLVER -->
+    <a href="/" class="btn btn-primary mt-4">Volver al inicio</a>
+
+</div>
+
+</body>
+</html>
