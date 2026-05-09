@@ -1,12 +1,225 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Detalle de Trip</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Detalle del Trip</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Estilo -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+
 </head>
+
 <body>
 
-<h2 th:text="'El idTrip es: ' + ${idTrip}"></h2>
+
+<header>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+        <a class="navbar-brand" th:href="@{/}">
+            TripApp
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarContent">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       th:href="@{/}">
+
+                        Inicio
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- CONTENIDO -->
+<main role="main">
+
+    <br><br><br>
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- IMAGEN -->
+            <div class="col-md-4 text-center">
+
+                <img class="img-fluid rounded shadow"
+                     th:src="@{'/images/' + ${trip.imagen}}"
+                     alt="Imagen del trip">
+
+            </div>
+
+            <!-- INFORMACIÓN -->
+            <div class="col-md-8">
+
+                <div class="card shadow">
+
+                    <!-- HEADER -->
+                    <div class="card-header bg-primary text-white">
+
+                        <h3>
+
+                            Trip:
+                            <span th:text="${trip.nomTrip}"></span>
+
+                        </h3>
+
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="card-body">
+
+                        <!-- FECHA -->
+                        <p>
+
+                            <strong>Publicado:</strong>
+
+                            <span th:text="${#dates.format(trip.fecha,'dd-MM-yyyy')}">
+                            </span>
+
+                        </p>
+
+                        <!-- COSTO -->
+                        <p>
+
+                            <strong>Costo:</strong>
+
+                            <span th:text="'$' + ${trip.costo}">
+                            </span>
+
+                        </p>
+
+                        <!-- CALIFICACIÓN -->
+                        <p>
+
+                            <strong>Calificación:</strong>
+
+                            <span th:text="${trip.calificacion}">
+                            </span>
+
+                        </p>
+
+                        <!-- DESCRIPCIÓN -->
+                        <h5 class="mt-4">
+                            Descripción
+                        </h5>
+
+                        <p th:text="${trip.descripcion}">
+                        </p>
+
+                        <!-- DETALLES -->
+                        <div class="card bg-light mt-4">
+
+                            <div class="card-body">
+
+                                <h5>
+                                    Detalles del Trip
+                                </h5>
+
+                                <p th:text="${trip.detalles}">
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ESTADO -->
+                        <p class="mt-3">
+
+                            <strong>Estado:</strong>
+
+                            <span th:if="${trip.activo}">
+                                Disponible
+                            </span>
+
+                            <span th:unless="${trip.activo}">
+                                No disponible
+                            </span>
+
+                        </p>
+
+                        <!-- BOTONES -->
+                        <div class="mt-4">
+
+                            <a class="btn btn-success"
+                               href="#">
+
+                                Comprar
+
+                            </a>
+
+                            <a class="btn btn-secondary"
+                               th:href="@{/}">
+
+                                Regresar
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer mt-5">
+
+    <div class="container">
+
+        <p>
+            &copy; 2026 TripApp |
+            Aplicación desarrollada con Spring Boot y Thymeleaf
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
+
 </html>

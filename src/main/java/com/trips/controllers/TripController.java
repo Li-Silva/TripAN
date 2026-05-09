@@ -15,6 +15,7 @@ public class TripController {
     @Autowired
     private ITripServices servicesTrip;
 
+    // VER DETALLE
     @GetMapping("/view/{id}")
     public String verDetalle(@PathVariable("id") int idTrip, Model model) {
 
@@ -32,6 +33,7 @@ public class TripController {
         return "trips/detalle";
     }
 
+    // ELIMINAR
     @GetMapping("/delete")
     public String eliminar(@RequestParam("id") int idTrip, Model model) {
 

@@ -15,6 +15,7 @@ public class HomeController {
 
     @Autowired
     private ITripServices tripService;
+    
 
     //  HOME (lista principal)
     @GetMapping("/")

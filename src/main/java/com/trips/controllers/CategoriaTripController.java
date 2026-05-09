@@ -26,7 +26,7 @@ public class CategoriaTripController {
         System.out.println("Nombre Categoria: " + nombre);
         System.out.println("Descripcion: " + descripcion);
 
-        return "redirect:/categorias/index"; 
+        return "redirect:/categorias/listCategoria"; 
     }
 
     //Un parámetro
